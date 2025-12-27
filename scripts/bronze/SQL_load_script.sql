@@ -4,12 +4,15 @@ GO
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME;
+    DECLARE @table_start_time DATETIME, @table_end_time DATETIME;
+    DECLARE @batch_start_time DATETIME, @batch_end_time DATETIME;
 	BEGIN TRY
+	    SET @batch_start_time = GETDATE();
 		PRINT '=========================================='
 		PRINT 'Loading Bronze Layer'
 		PRINT '=========================================='
 
-
+	    SET @table_start_time = GETDATE();
 		PRINT '------------------------------------------'
 		PRINT 'Loading CRM Table'
 		PRINT '------------------------------------------'
@@ -61,9 +64,12 @@ BEGIN
 		   TABLOCK
 		)
 		SET @end_time = GETDATE();
+		SET @table_end_time = GETDATE();
 		PRINT '>> Load Duration : ' + CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + ' seconds' 
 		PRINT '***************************************'
+		PRINT '>> Load Duration for CRM Table : ' + CAST(DATEDIFF(second,@table_start_time,@table_end_time) AS NVARCHAR) + ' seconds' 
 
+		SET @table_start_time = GETDATE();
 		PRINT '------------------------------------------'
 		PRINT 'Loading ERP Table'
 		PRINT '------------------------------------------'
@@ -113,9 +119,13 @@ BEGIN
 		   TABLOCK
 		);
 		SET @end_time = GETDATE();
+		SET @table_end_time = GETDATE();
 		PRINT '>> Load Duration : ' + CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + ' seconds' 
 		PRINT '***************************************'
-
+		PRINT '>> Load Duration for CRM Table : ' + CAST(DATEDIFF(second,@table_start_time,@table_end_time) AS NVARCHAR) + ' seconds' 
+		SET @batch_end_time = GETDATE();
+		PRINT 'Loading Bronze Layer is Completed'
+	    PRINT '    - Total Load Duration : ' + CAST(DATEDIFF(second,@batch_start_time,@batch_end_time) AS NVARCHAR) + ' seconds' 
 	END TRY
 	BEGIN CATCH
 		   PRINT '***********************************************'
