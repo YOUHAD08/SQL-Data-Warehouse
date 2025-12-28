@@ -31,3 +31,9 @@ FROM bronze.crm_prd_info
 SELECT  prd_cost
 FROM bronze.crm_prd_info
 WHERE prd_cost IS NULL OR prd_cost < 0
+
+
+-- Check for Invalid Date Orders
+Select * 
+FROM bronze.crm_prd_info
+WHERE prd_end_dt < prd_start_dt
