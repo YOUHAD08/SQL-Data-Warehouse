@@ -144,7 +144,7 @@ BEGIN
         )
         SELECT
             sls_ord_num,
-            sls_prd_key,
+            REPLACE(sls_prd_key,'-','_') AS sls_prd_key,
             sls_cust_id,
             CASE WHEN sls_order_dt = 0  OR  LEN(sls_order_dt) != 8 THEN NULL
                  ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
