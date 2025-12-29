@@ -162,3 +162,18 @@ SELECT DISTINCT gen FROM silver.erp_cust_az12
 -- Final Checks
 SELECT * FROM silver.erp_cust_az12
 
+-- ====================================================================
+-- Checking 'silver.erp_loc_a101'
+-- ====================================================================
+-- Data Standardization & Consistency
+
+SELECT 
+REPLACE(cid,'-','') cid,
+cntry
+FROM silver.erp_loc_a101
+WHERE REPLACE(cid,'-','') NOT IN (SELECT cst_key FROM silver.crm_cust_info)
+
+SELECT DISTINCT 
+    cntry 
+FROM silver.erp_loc_a101
+ORDER BY cntry;
