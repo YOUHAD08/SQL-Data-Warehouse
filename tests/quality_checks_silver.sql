@@ -155,3 +155,6 @@ FROM silver.crm_sales_details
 SELECT * FROM bronze.erp_cust_az12
 WHERE bdate < '1926-01-01' OR bdate> GETDATE()
 
+
+-- Data Standardization & Consistency
+SELECT DISTINCT gen FROM bronze.erp_cust_az12
