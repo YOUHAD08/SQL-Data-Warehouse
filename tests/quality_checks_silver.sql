@@ -1,9 +1,28 @@
 USE DataWarehouse;
 GO
+/*
+===============================================================================
+Quality Checks
+===============================================================================
+Script Purpose:
+    This script performs various quality checks for data consistency, accuracy, 
+    and standardization across the 'silver' layer. It includes checks for:
+    - Null or duplicate primary keys.
+    - Unwanted spaces in string fields.
+    - Data standardization and consistency.
+    - Invalid date ranges and orders.
+    - Data consistency between related fields.
+
+Usage Notes:
+    - Run these checks after data loading Silver Layer.
+    - Investigate and resolve any discrepancies found during the checks.
+===============================================================================
+*/
 
 -- ====================================================================
 -- Checking 'silver.crm_cust_info'
 -- ====================================================================
+
 -- Check for NULLs or Duplicates in Primary Key
 -- Expectation: No Results
 SELECT 
@@ -89,6 +108,7 @@ FROM silver.crm_prd_info
 -- ====================================================================
 -- Checking 'silver.crm_sales_details'
 -- ====================================================================
+
 -- Check for Invalid Dates
 -- Expectation: No Invalid Dates
 SELECT 
@@ -149,6 +169,7 @@ FROM silver.crm_sales_details
 -- ====================================================================
 -- Checking 'silver.erp_cust_az12'
 -- ====================================================================
+
 -- Identify Out-of-Range Dates
 -- Expectation: Birthdates between 1924-01-01 and Today
 
@@ -185,6 +206,7 @@ FROM silver.erp_loc_a101
 -- ====================================================================
 -- Checking 'silver.erp_px_cat_g1v2'
 -- ====================================================================
+
 -- Check for Unwanted Spaces
 -- Expectation: No Results
 SELECT 
