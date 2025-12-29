@@ -145,3 +145,13 @@ ORDER BY sls_sales, sls_quantity, sls_price;
 --Finale Checks
 SELECT *
 FROM silver.crm_sales_details
+
+-- ====================================================================
+-- Checking 'silver.erp_cust_az12'
+-- ====================================================================
+-- Identify Out-of-Range Dates
+-- Expectation: Birthdates between 1924-01-01 and Today
+
+SELECT * FROM bronze.erp_cust_az12
+WHERE bdate < '1926-01-01' OR bdate> GETDATE()
+
