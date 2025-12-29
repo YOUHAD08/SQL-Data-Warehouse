@@ -158,3 +158,7 @@ WHERE bdate < '1926-01-01' OR bdate> GETDATE()
 
 -- Data Standardization & Consistency
 SELECT DISTINCT gen FROM silver.erp_cust_az12
+
+-- Final Checks
+SELECT * FROM silver.erp_cust_az12
+
