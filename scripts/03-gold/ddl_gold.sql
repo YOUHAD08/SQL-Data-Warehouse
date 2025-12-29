@@ -24,3 +24,24 @@ ON ci.cst_key = ca.cid
 LEFT JOIN silver.erp_loc_a101 la
 ON ci.cst_key = la.cid
 GO
+
+-- =============================================================================
+-- Create Dimension: gold.dim_products
+-- =============================================================================
+
+
+SELECT 
+    pn.prd_id,
+    pn.prd_key,
+    pn.prd_nm,
+    pn.prd_line,
+    pn.prd_cost,
+    pn.cat_id,
+    pc.cat,
+    pc.subcat,
+    pc.maintenance,
+    pn.prd_start_dt
+FROM silver.crm_prd_info pn 
+LEFT JOIN silver.erp_px_cat_g1v2 pc
+ON pn.cat_id = pc.id
+WHERE pn.prd_end_dt IS NULL --Filter Out Historical Data
