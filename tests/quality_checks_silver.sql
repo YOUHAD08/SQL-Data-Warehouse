@@ -152,9 +152,9 @@ FROM silver.crm_sales_details
 -- Identify Out-of-Range Dates
 -- Expectation: Birthdates between 1924-01-01 and Today
 
-SELECT * FROM bronze.erp_cust_az12
+SELECT * FROM silver.erp_cust_az12
 WHERE bdate < '1926-01-01' OR bdate> GETDATE()
 
 
 -- Data Standardization & Consistency
-SELECT DISTINCT gen FROM bronze.erp_cust_az12
+SELECT DISTINCT gen FROM silver.erp_cust_az12
