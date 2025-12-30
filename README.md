@@ -35,6 +35,8 @@ A production-ready **SQL Server data warehouse** implementing the **Medallion Ar
   - [📖 Documentation](#-documentation)
   - [🔑 Key Features](#-key-features)
   - [🛠️ Technology Stack](#️-technology-stack)
+  - [🙏 Acknowledgments](#-acknowledgments)
+    - [Learning Resources:](#learning-resources)
   - [📄 License](#-license)
   - [👤 Author](#-author)
 
@@ -481,6 +483,18 @@ Comprehensive documentation is available in the `docs/` folder:
 - **Architecture:** Medallion (Databricks-inspired layering)
 - **Version Control:** Git
 - **Documentation:** Markdown + Visual diagrams
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to **Baraa Khatib Salkini** (Data With Baraa) for the incredible learning resources and project guidance that made this data warehouse implementation possible.
+
+### Learning Resources:
+
+- 📺 **YouTube Channel**: [Data With Baraa](http://bit.ly/3GiCVUE)
+- 💼 **LinkedIn**: [Baraa Khatib Salkini](https://linkedin.com/in/baraa-khatib-salkini)
+- 🌐 **Website**: [DataWithBaraa.com](https://www.datawithbaraa.com)
 
 ---
 
